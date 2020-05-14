@@ -125,8 +125,12 @@ Public Datasets: Bring up your Google BigQuery console, open the menu for the pu
 Paste your SQL query and answer the question in a sentence.  Be sure you properly format your queries and results using markdown. 
 
 - What's the size of this dataset? (i.e., how many trips)
+ * SQL query: SELECT count(*) FROM `bigquery-public-data.san_francisco.bikeshare_trips`
+ * Answer : 983648
 
 - What is the earliest start date and time and latest end date and time for a trip?
+ * SQL query: 
+ * Answer: 
 
 - How many bikes are there?
 
