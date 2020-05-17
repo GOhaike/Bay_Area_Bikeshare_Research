@@ -159,7 +159,8 @@ Paste your SQL query and answer the question in a sentence.  Be sure you properl
 **SELECT count(station_id) FROM bigquery-public-data.san_francisco.bikeshare_stations WHERE landmark = "San Jose"**
 
 - Question 2: what are the top three stations names and landmark with the highest number of dock count?
-**Answer:**
+
+  - Answer
 
 	   	  |           name              | landmark      | dockcount |
  	   	  | :---------------------------| :------------ | :---------|
