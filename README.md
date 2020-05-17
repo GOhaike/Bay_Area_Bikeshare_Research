@@ -162,11 +162,11 @@ Paste your SQL query and answer the question in a sentence.  Be sure you properl
 
   - Answer
 
-	   	  |           name              | landmark      | dockcount |
- 	   	  | :---------------------------| :------------ | :---------|
-  	  	  | Cyril Magnin St at Ellis St | San Francisco |     35    |
- 	    	  | 5th St at Folsom St         | San Francisco |     31    |
- 	    	  | Market at 10th              | San Francisco |     27    |
+ |           name              | landmark      | dockcount |
+ | :---------------------------| :------------ | :---------|
+ | Cyril Magnin St at Ellis St | San Francisco |     35    |
+ | 5th St at Folsom St         | San Francisco |     31    |
+ | Market at 10th              | San Francisco |     27    |
 	
  **SQL query:SELECT name,landmark,dockcount, FROM bigquery-public-data.san_francisco.bikeshare_stations ORDER BY (dockcount) DESC LIMIT 3**
 
