@@ -126,18 +126,18 @@ Paste your SQL query and answer the question in a sentence.  Be sure you properl
 
 - What's the size of this dataset? (i.e., how many trips)
 
- * SQL query:
- * ** SELECT count(*) FROM `bigquery-public-data.san_francisco.bikeshare_trips`**
+ - SQL query:
+  **SELECT count(*) FROM `bigquery-public-data.san_francisco.bikeshare_trips`**
 
- * Answer :
- * **983648**
+ - Answer :
+  **983648**
 
 - What is the earliest start date and time and latest end date and time for a trip?
 
   - SQL query:
-  * ** SELECT min(start_date) AS earliest_Start_date_and_time, max(end_date) AS latest_end_date_and_time FROM `bigquery-public-data.san_francisco.bikeshare_trips`**
+   **SELECT min(start_date) AS earliest_Start_date_and_time, max(end_date) AS latest_end_date_and_time FROM `bigquery-public-data.san_francisco.bikeshare_trips`**
 
-* Answer: 
+   **Answer:** 
 			
 	| earliest_startr_date_and_time | latest_end_date_and_time|
 	|:------------------------------| :-----------------------| 
@@ -145,36 +145,36 @@ Paste your SQL query and answer the question in a sentence.  Be sure you properl
 
 - How many bikes are there?
 
- * SQL query:
- * **SELECT count(distinct bike_number) AS number_of_bikes FROM `bigquery-public-data.san_francisco.bikeshare_trips`**
+  **SQL query: SELECT count(distinct bike_number) AS number_of_bikes FROM `bigquery-public-data.san_francisco.bikeshare_trips`**
 
- * Answer:
- * ** number_of_bikes = 700**
+  **Answer:  number_of_bikes = 700**
 
 ### Questions of your own
 - Make up 3 questions and answer them using the Bay Area Bike Share Trips Data.  These questions MUST be different than any of the questions and queries you ran above.
 
 - Question 1: How many stations are there in San Jose?
-  * Answer:18
+ **Answer:18**
 
-  * SQL query:
-   * **SELECT count(station_id) FROM bigquery-public-data.san_francisco.bikeshare_stations WHERE landmark = "San Jose"**
+- SQL query:
+ **SELECT count(station_id) FROM bigquery-public-data.san_francisco.bikeshare_stations WHERE landmark = "San Jose"**
 
 - Question 2: what are the top three stations names and landmark with the highest number of dock count?
-  * Answer:
+
+ **Answer:**
+
        	|  name       		       |  landmark     | dockcount |
 	| :----------------------------| :------------ |:----------|
 	|  Cyril Magnin St at Ellis St | San Francisco |     35    |
 	|  5th St at Folsom St         | San Francisco |     31    |
 	|  Market at 10th              | San Francisco |     27    |
 
-  * SQL query:
-  * **SELECT name,landmark,dockcount, FROM bigquery-public-data.san_francisco.bikeshare_stations ORDER BY (dockcount) DESC LIMIT 3**
+ **SQL query:SELECT name,landmark,dockcount, FROM bigquery-public-data.san_francisco.bikeshare_stations ORDER BY (dockcount) DESC LIMIT 3**
 
 - Question 3: What is the oldest installation date and what are the stations_id ,name and dockcount?
 
-  * Answer:
-  * **oldest station is 2013-08-05**
+ - Answer:
+  **oldest station is 2013-08-05**
+
 	
 	| station_id | name                          | dockcount |
 	| :----------| :-----------------------------| :---------|
@@ -184,9 +184,9 @@ Paste your SQL query and answer the question in a sentence.  Be sure you properl
 	|     4      | Arena Green / SAP Center      |    19     |
 	|     5      | Adobe on Almaden              |    19     |
 
-  * SQL query:
-  * **SELECT min(installation_date) FROM bigquery-public-data.san_francisco.bikeshare_stations**
-  * **SELECT station_id, name, dockcount, FROM bigquery-public-data.san_francisco.bikeshare_stations WHERE installation_date ='2013-08-05'**
+- SQL query: 
+   **SELECT min(installation_date) FROM bigquery-public-data.san_francisco.bikeshare_stations**
+   **SELECT station_id, name, dockcount, FROM bigquery-public-data.san_francisco.bikeshare_stations WHERE installation_date ='2013-08-05'**
 
 ### Bonus activity queries (optional - not graded - just this section is optional, all other sections are required)
 
