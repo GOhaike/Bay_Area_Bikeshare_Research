@@ -156,13 +156,11 @@ Paste your SQL query and answer the question in a sentence.  Be sure you properl
  **Answer:18**
 
 - SQL query:
- **SELECT count(station_id) FROM bigquery-public-data.san_francisco.bikeshare_stations WHERE landmark = "San Jose"**
+**SELECT count(station_id) FROM bigquery-public-data.san_francisco.bikeshare_stations WHERE landmark = "San Jose"**
 
 - Question 2: what are the top three stations names and landmark with the highest number of dock count?
- - Answer:
-
-
-       |  name       		     | landmark      | dockcount |
+** Answer:**
+       |           name              | landmark      | dockcount |
        | :---------------------------| :------------ | :---------|
        | Cyril Magnin St at Ellis St | San Francisco |     35    |
        | 5th St at Folsom St         | San Francisco |     31    |
