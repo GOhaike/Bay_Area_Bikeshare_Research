@@ -250,7 +250,8 @@ from `bigquery-public-data.san_francisco_bikeshare.bikeshare_station_info`
     | 2013-08-29 09:08:00         |      2016-08-31 23:48:00 |
 
   * How many bikes are there?
-   * jupyter@midsw205:~$ bq query --use_legacy_sql=false 'SELECT count(distinct bike_number) AS number_of_bikes FROM `bigquery-public-data.san_francisco.bikeshare_trips`'Waiting on bqjob_r35e6666e70aa9cab_000001724916     c771_1 ... (0s) Current status: DONE   
+   
+* jupyter@midsw205:~$ bq query --use_legacy_sql=false 'SELECT count(distinct bike_number) AS number_of_bikes FROM `bigquery-public-data.san_francisco.bikeshare_trips`'Waiting on bqjob_r35e6666e70aa9cab_000001724916     c771_1 ... (0s) Current status: DONE   
 
     | number_of_bikes |
     |:----------------|
@@ -267,17 +268,27 @@ from `bigquery-public-data.san_francisco_bikeshare.bikeshare_station_info`
 Identify the main questions you'll need to answer to make recommendations (list
 below, add as many questions as you need).
 
-- Question 1: 
+- Question 1: What are the stations id with less than 3 bikes available and more than 10 dock available limiit to 10
 
-- Question 2: 
+- Question 2: what are the counts of subscriber type
 
-- Question 3: 
+- Question 3: what are the first 10 highest trip time in sec, the stations id and the subscibers
 
-- Question 4: 
+- Question 4: What are the lest 10 station id with least number of start trips?
 
-- ...
+- Question 5: What are the number of bikeshare stations as per landmark
 
-- Question n: 
+- Question 6: What is the average trip time 
+
+- Question 7: What is the minimum and maximum trip time
+
+- Question 8: What is the minimum and maximum bike available
+
+- Question 9: What are the peak time with highest number of trips
+
+- Question 10: Are there more customers or subscribers at a specific time and why?
+
+- Question 11: What is the utilization rate of the bikes stations across the landmark
 
 ### Answers
 
@@ -285,29 +296,136 @@ Answer at least 4 of the questions you identified above You can use either
 BigQuery or the bq command line tool.  Paste your questions, queries and
 answers below.
 
-- Question 1: 
-  * Answer:
-  * SQL query:
+- Question 1: What are the stattionid with less than 3 bikes available and more than 10 dock available limit to 10
 
-- Question 2:
   * Answer:
-  * SQL query:
 
-- Question 3:
+    |station_id|bikes_available|docks_available        |time                    |	
+    |:---------|:--------------|:----------------------|:-----------------------|
+    |91        |1              |34                     |2016-08-25 18:15:00 UTC |	
+    |91        |1              |34                     |2016-08-25 17:24:54 UTC |	
+    |91        |1              |34                     |2016-08-25 15:50:54 UTC |	
+    |91        |1              |34                     |2016-08-25 17:39:01 UTC |	
+    |91        |1              |34                     |2016-08-25 20:16:49 UTC |
+    |91        |1              |34                     |2016-08-25 17:52:59 UTC |	
+    |91        |1              |34                     |2016-08-25 14:04:51 UTC |	
+    |91        |1              |30                     |2016-08-30 17:04:01 UTC |
+    |91        |1              |34                     |2016-08-25 19:28:51 UTC |	
+    |91        |1              |34                     |2016-08-25 16:36:54 UTC |
+
+
+  * SQL query:SELECT * from `bigquery-public-data.san_francisco.bikeshare_status`
+
+    WHERE bikes_available < 2
+    AND docks_available > 10
+    LIMIT 10
+
+- Question 2: What are the number different subscribers
+
   * Answer:
-  * SQL query:
+
+    |subscriber_type|count |
+    |:--------------|:-----|			
+    |Customer       |136809|	
+    |Subscriber     |846839|
+
+  * SQL query: SELECT subscriber_type , COUNT(*) FROM `bigquery-public-data.san_francisco.bikeshare_trips` GROUP BY subscriber_type
+
+- Question 3: What are the first 10 highest trips time in sec, the station id, and the subscribers 
+
+  * Answer:
+
+    |duration_sec|bike_number|start_station_id|end_station_id|subscriber_type|
+    |:-----------|:----------|:---------------|:-------------|:--------------|	
+    |17270400    |535        |66              |62            |Customer       |	
+    |2137000     |466        |77              |68            |Customer       |	
+    |1852590     |680        |31              |32            |Subscriber     |
+    |1133540     |262        |35              |35            |Customer       |	
+    |722236      |247        |35              |35            |Customer       |	
+    |720454      |692        |22              |25            |Customer       |	
+    |716480      |633        |50              |72            |Subscriber     |	
+    |715339      |251        |14              |5             |Customer       |	
+    |688899      |230        |34              |36            |Customer       |	
+    |655939      |132        |3               |12            |Customer       |
+
+
+  * SQL query: SELECT duration_sec, bike_number,start_station_id,end_station_id,subscriber_type FROM `bigquery-public-data.san_francisco.bikeshare_trips`
+    ORDER BY duration_sec DESC LIMIT 10
   
-- Question 4:
+- Question 4: What are the least 10 station id with least number of start trips
+
   * Answer:
-  * SQL query:
+
+    |start_station_id|count|
+    |:---------------|-----|	
+    |88              |20   |	
+    |91              |69   |	
+    |89              |84   |	
+    |90              |173  |	
+    |21              |241  |	
+    |24              |272  |	
+    |23              |373  |	
+    |26              |463  |	
+    |83              |467  |	
+    |25              |931  |
+
+
+  * SQL query:SELECT  start_station_id, COUNT(*) FROM `bigquery-public-data.san_francisco.bikeshare_trips`GROUP BY start_station_id ORDER BY 2 LIMIT 10;
   
-- ...
 
-- Question n:
+- Question 5: What are the number of bikeshare stations as per landmark
+
   * Answer:
-  * SQL query:
+    
+     | landmark	    |count|
+     |:-------------|:----|		
+     |San Francisco |37   |	
+     |San Jose      |18   |	
+     |Redwood City  |7    |	
+     |Mountain View |7    |	
+     |Palo Alto     |5    |
 
----
+
+  * SQL query:
+    * SELECT landmark, COUNT(*) FROM `bigquery-public-data.san_francisco.bikeshare_stations`  GROUP BY landmark ORDER BY 2 DESC LIMIT 10;
+
+-  Question 6: What is the average trip time
+
+ * Answer:
+
+     |avg_trip_time     |	
+     |:-----------------|	
+     |1018.9323467338004|
+
+* SQL query:
+
+ * SELECT AVG(duration_sec) as avg_trip_time FROM `bigquery-public-data.san_francisco.bikeshare_trips`
+
+- Question 7: What is the minimum and maximum trip time
+
+  * Answer
+
+    | min_duration_trip|max_duration_trip|
+    |:-----------------|:----------------|	
+    |60                |17270400         |
+ 
+   * SQL Query:
+
+    * SELECT min(duration_sec) as min_duration_trip, max(duration_sec) as max_duration_trip FROM `bigquery-public-data.san_francisco.bikeshare_trips`
+
+- Question 8: What is the manimum and maximum bikes available
+
+ * Answer
+
+    | min_bike_available|max_bike_available|
+    |:------------------|:-----------------|	
+    |0                  |29                |
+
+
+ * SQL query :
+
+   * SELECT min(bikes_available) as min_bike_available, max(bikes_available) as max_bike_available FROM `bigquery-public-data.san_francisco.bikeshare_status`
+
 
 ## Part 3 - Employ notebooks to synthesize query project results
 
