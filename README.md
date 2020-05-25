@@ -242,7 +242,9 @@ from `bigquery-public-data.san_francisco_bikeshare.bikeshare_station_info`
 
 
   * What is the earliest start time and latest end time for a trip?
-   * jupyter@midsw205:~$ bq query --use_legacy_sql=false 'SELECT min(start_date) AS earliest_Start_date_and_time, max(end_date) AS latest_end_date_and_time FROM `bigquery-public-data.san_francisco.bikeshare_trips`'
+
+    * jupyter@midsw205:~$ bq query --use_legacy_sql=false 'SELECT min(start_date) AS earliest_Start_date_and_time, max(end_date) AS latest_end_date_and_time FROM `bigquery-public-data.sanf rancisco.bikeshare_trips`'
+
      Waiting on bqjob_r780815096eddff92_000001724914b28b_1 ... (0s) Current status: DONE 
   
     |earliest_Start_date_and_time | latest_end_date_and_time |
@@ -251,7 +253,7 @@ from `bigquery-public-data.san_francisco_bikeshare.bikeshare_station_info`
 
   * How many bikes are there?
    
-* jupyter@midsw205:~$ bq query --use_legacy_sql=false 'SELECT count(distinct bike_number) AS number_of_bikes FROM `bigquery-public-data.san_francisco.bikeshare_trips`'Waiting on bqjob_r35e6666e70aa9cab_000001724916     c771_1 ... (0s) Current status: DONE   
+    * jupyter@midsw205:~$ bq query --use_legacy_sql=false 'SELECT count(distinct bike_number) AS number_of_bikes FROM `bigquery-public-data.san_francisco.bikeshare_trips`'Waiting on bqjob        _r35e6666e70aa9cab_000001724916     c771_1 ... (0s) Current status: DONE   
 
     | number_of_bikes |
     |:----------------|
@@ -261,7 +263,7 @@ from `bigquery-public-data.san_francisco_bikeshare.bikeshare_station_info`
 
 2. New Query (Run using bq and paste your SQL query and answer the question in a sentence, using properly formatted markdown):
 
-  * How many trips are in the morning vs in the afternoon?
+    * How many trips are in the morning vs in the afternoon?
 
 
 ### Project Questions
@@ -423,6 +425,7 @@ answers below.
 
 
  * SQL query :
+
 
    * SELECT min(bikes_available) as min_bike_available, max(bikes_available) as max_bike_available FROM `bigquery-public-data.san_francisco.bikeshare_status`
 
