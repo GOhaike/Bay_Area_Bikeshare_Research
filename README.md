@@ -232,32 +232,30 @@ from `bigquery-public-data.san_francisco_bikeshare.bikeshare_station_info`
 
   * What's the size of this dataset? (i.e., how many trips)
 
-   ** jupyter@midsw205:~/w205/project-1-GOhaike$ bq query --use_legacy_sql=false 'SELECT count(*) FROM `bigquery-public-data.san_francisco.bikeshare_trips`'
-Waiting on bqjob_r5da2f30aa0504f44_00000172490d5272_1 ... (0s) Current status: DONE **   
-	+--------+
-	|  f0_   |
-	+--------+
-	| 983648 |
-	+--------+
+   * jupyter@midsw205:~/w205/project-1-GOhaike$ bq query --use_legacy_sql=false 'SELECT count(*) FROM `bigquery-public-data.san_francisco.bikeshare_trips`'
+      Waiting on bqjob_r5da2f30aa0504f44_00000172490d5272_1 ... (0s) Current status: DONE   
+	
+   
+    |f0      |
+    |:-------|
+    | 983648 |
 
 
   * What is the earliest start time and latest end time for a trip?
-   ** jupyter@midsw205:~$ bq query --use_legacy_sql=false 'SELECT min(start_date) AS earliest_Start_date_and_time, max(end_date) AS latest_end_date_and_time FROM `bigquery-public-data.san_francisco.bikeshare_trips`'
-Waiting on bqjob_r780815096eddff92_000001724914b28b_1 ... (0s) Current status: DONE **
+   * jupyter@midsw205:~$ bq query --use_legacy_sql=false 'SELECT min(start_date) AS earliest_Start_date_and_time, max(end_date) AS latest_end_date_and_time FROM `bigquery-public-data.san_francisco.bikeshare_trips`'
+     Waiting on bqjob_r780815096eddff92_000001724914b28b_1 ... (0s) Current status: DONE 
   
-+------------------------------+--------------------------+
-| earliest_Start_date_and_time | latest_end_date_and_time |
-+------------------------------+--------------------------+
-|          2013-08-29 09:08:00 |      2016-08-31 23:48:00 |
-+------------------------------+--------------------------+
+    |earliest_Start_date_and_time | latest_end_date_and_time |
+    |:----------------------------|--------------------------|
+    | 2013-08-29 09:08:00         |      2016-08-31 23:48:00 |
 
   * How many bikes are there?
-   ** jupyter@midsw205:~$ bq query --use_legacy_sql=false 'SELECT count(distinct bike_number) AS number_of_bikes FROM `bigquery-public-data.san_francisco.bikeshare_trips`'Waiting on bqjob_r35e6666e70aa9cab_000001724916c771_1 ... (0s) Current status: DONE**   
-+-----------------+
-| number_of_bikes |
-+-----------------+
-|             700 |
-+-----------------+
+   * jupyter@midsw205:~$ bq query --use_legacy_sql=false 'SELECT count(distinct bike_number) AS number_of_bikes FROM `bigquery-public-data.san_francisco.bikeshare_trips`'Waiting on bqjob_r35e6666e70aa9cab_000001724916     c771_1 ... (0s) Current status: DONE   
+
+    | number_of_bikes |
+    |:----------------|
+    |     700         |
+
 
 
 2. New Query (Run using bq and paste your SQL query and answer the question in a sentence, using properly formatted markdown):
