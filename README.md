@@ -261,6 +261,7 @@ from `bigquery-public-data.san_francisco_bikeshare.bikeshare_station_info`
 
 
 
+
 2. New Query (Run using bq and paste your SQL query and answer the question in a sentence, using properly formatted markdown):
 
     * How many trips are in the morning vs in the afternoon?
@@ -286,11 +287,13 @@ below, add as many questions as you need).
 
 - Question 8: What is the minimum and maximum bike available
 
-- Question 9: What are the peak time with highest number of trips
+- Question 9: What are the top 5 busiest hours from the start date
 
-- Question 10: Are there more customers or subscribers at a specific time and why?
+- Question 10: What are the top 5 busiest hours from the end date?
 
-- Question 11: What is the utilization rate of the bikes stations across the landmark
+- Question 11:Extract commute hours and filter trips between 5 to 60 minutes
+
+- Question 12 What is the number of trips recorded at by region
 
 ### Answers
 
@@ -429,6 +432,62 @@ answers below.
 
    * SELECT min(bikes_available) as min_bike_available, max(bikes_available) as max_bike_available FROM `bigquery-public-data.san_francisco.bikeshare_status`
 
+- Question 9: What are the top 5 busiest trip hours from the start date?
+
+   * Answer
+
+    |Hour|trip_count|
+    |:---|:---------|
+    |8   |132464    |	
+    |17  |126302    |	
+    |9   |96118     |	
+    |16  |88755     |	
+    |18  |84569     |
+
+
+* SQL query: SELECT EXTRACT(HOUR FROM start_date) as Hour, count(EXTRACT(HOUR FROM start_date)) as trip_count
+             FROM `bigquery-public-data.san_francisco.bikeshare_trips`
+             GROUP BY Hour
+             ORDER BY trip_count DESC LIMIT 5
+
+- Question 10: What are the top 5 busiest trip hours from the end date?
+
+ * Answer:
+
+    |Hour|trip_count|
+    |:---|:---------|		
+    |17  |129072    |	
+    |8   |123941    |	
+    |9   |108459    |	
+    |18  |96317     |	
+    |16  |81238     |
+
+
+ * SQL query:
+
+    SELECT EXTRACT(HOUR FROM end_date) as Hour, count(EXTRACT(HOUR FROM end_date)) as trip_count
+    FROM `bigquery-public-data.san_francisco.bikeshare_trips`
+    GROUP BY Hour
+    ORDER BY trip_count DESC LIMIT 5
+
+- Question 11:Extract commute hours and filter trips between 5 to 60 minutes
+
+ * Answer 
+
+    |HR |MIN|duration_sec|	start_date       |	end_date         |
+    |:--|:--|:-----------|:----------------------|:----------------------|		
+    |16 |18 |3600        |2014-04-19 16:18:00 UTC|2014-04-19 17:18:00 UTC|	
+    |16 |4  |3598        |2014-04-07 16:04:00 UTC|2014-04-07 17:04:00 UTC|	
+    |16 |41 |3598        |2016-03-24 16:41:00 UTC|2016-03-24 17:41:00 UTC|	
+    |17 |15 |3596        |2015-05-16 17:15:00 UTC|2015-05-16 18:15:00 UTC|	
+    |16 |0  |3595        |2016-05-05 16:00:00 UTC|2016-05-05 17:00:00 UTC|
+
+
+* SQL query:
+  * SELECT EXTRACT(HOUR FROM start_date) AS HR, EXTRACT(MINUTE FROM start_date) AS MIN, duration_sec, start_date, end_date
+    FROM `bigquery-public-data.san_francisco.bikeshare_trips`
+    WHERE ((EXTRACT(HOUR FROM start_date) IN (6,7,8)) OR (EXTRACT(HOUR FROM start_date) IN (16,17,18,19))) AND (duration_sec >= 300 AND duration_sec <= 3600)
+    ORDER BY duration_sec DESC LIMIT 5
 
 ## Part 3 - Employ notebooks to synthesize query project results
 
