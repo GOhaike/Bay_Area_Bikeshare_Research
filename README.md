@@ -290,7 +290,22 @@ from `bigquery-public-data.san_francisco_bikeshare.bikeshare_station_info`
 2. New Query (Run using bq and paste your SQL query and answer the question in a sentence, using properly formatted markdown):
 
     * How many trips are in the morning vs in the afternoon?
+    
+    ```
+      jupyter@midsw205:~$ bq query --use_legacy_sql=false 'SELECT COUNTIF(EXTRACT(HOUR FROM start_date) IN (5,6,7,8,9)) AS 	 morning_trip, 
+      > COUNTIF(EXTRACT(HOUR FROM start_date) IN (12,13,14,15)) AS afternoon_trip,
+      > COUNTIF(EXTRACT(HOUR FROM start_date) IN (16,18,19,20)) AS evening_trip,
+      > FROM `bigquery-public-data.san_francisco.bikeshare_trips`'
 
+  ```
+  * Output 
+  
+	Waiting on bqjob_r116642e0161f6b5d_000001725ca74589_1 ... (0s) Current status: DONE   
+	+--------------+----------------+--------------+
+	| morning_trip | afternoon_trip | evening_trip |
+	+--------------+----------------+--------------+
+	|       321730 |         176142 |       237142 |
+	+--------------+----------------+--------------+
 
 ### Project Questions
 Identify the main questions you'll need to answer to make recommendations (list
