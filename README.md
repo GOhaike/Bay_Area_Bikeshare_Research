@@ -146,10 +146,12 @@ Paste your SQL query and answer the question in a sentence.  Be sure you properl
 
 
    - Answer: 
+
 			
-  	 | earliest_startr_date_and_time | latest_end_date_and_time|
- 	 |:------------------------------| :-----------------------| 
- 	 | 2013-08-29 09:08:00 UTC       | 2016-08-31 23:48:00 UTC |
+  | earliest_startr_date_and_time | latest_end_date_and_time|
+  |:------------------------------| :-----------------------| 
+  | 2013-08-29 09:08:00 UTC       | 2016-08-31 23:48:00 UTC |
+
 
 - How many bikes are there?
 
@@ -163,6 +165,7 @@ Paste your SQL query and answer the question in a sentence.  Be sure you properl
 
  -  Answer: number_of_bikes :**700**
 
+
 ### Questions of your own
 
   - Make up 3 questions and answer them using the Bay Area Bike Share Trips Data.  These questions MUST be different than any of the questions and queries you ran above.
@@ -173,21 +176,26 @@ Paste your SQL query and answer the question in a sentence.  Be sure you properl
 
 - SQL query:
 
+
   ```
   SELECT count(station_id) FROM `bigquery-public-data.san_francisco.bikeshare_stations` 
 	WHERE landmark = "San Jose"
   ```
 
+
 - Question 2: what are the top three stations names and landmark with the highest number of dock count?
 
   - Answer
 
- 		|           name              | landmark      | dockcount |
- 		| :---------------------------| :------------ | :---------|
- 		| Cyril Magnin St at Ellis St | San Francisco |     35    |
- 		| 5th St at Folsom St         | San Francisco |     31    |
- 		| Market at 10th              | San Francisco |     27    |
+
+ |           name              | landmark      | dockcount |
+ | :---------------------------| :------------ | :---------|
+ | Cyril Magnin St at Ellis St | San Francisco |     35    |
+ | 5th St at Folsom St         | San Francisco |     31    |
+ | Market at 10th              | San Francisco |     27    |
 	
+
+
  - SQL query:
 
  
@@ -263,7 +271,7 @@ from `bigquery-public-data.san_francisco_bikeshare.bikeshare_station_info`
     ```
 
 	
-    	|freq    |
+    	| freq   |
      	|:-------|
      	| 983648 |
 
@@ -277,9 +285,9 @@ from `bigquery-public-data.san_francisco_bikeshare.bikeshare_station_info`
 
 
 
-  	|earliest_Start_date_and_time | latest_end_date_and_time |
-  	|:----------------------------|--------------------------|
-  	| 2013-08-29 09:08:00         |      2016-08-31 23:48:00 |
+  	| earliest_Start_date_and_time | latest_end_date_and_time |
+  	|:-----------------------------|--------------------------|
+  	| 2013-08-29 09:08:00          |      2016-08-31 23:48:00 |
     
     
 
@@ -314,11 +322,11 @@ from `bigquery-public-data.san_francisco_bikeshare.bikeshare_station_info`
   * Output  
 
   
-+--------------+----------------+--------------+
+
 | morning_trip | afternoon_trip | evening_trip |
-+--------------+----------------+--------------+
+|:-------------|:---------------|:-------------|
 |       321730 |         176142 |       237142 |
-+--------------+----------------+--------------+
+
 
 ### Project Questions
 Identify the main questions you'll need to answer to make recommendations (list
@@ -360,61 +368,63 @@ below, add as many questions as you need).
 
   - Answer:
 
-  		|station_id|bikes_available|docks_available        |time                    |	
-  		|:---------|:--------------|:----------------------|:-----------------------|
-  		|91        |1              |34                     |2016-08-25 18:15:00 UTC |	
-  		|91        |1              |34                     |2016-08-25 17:24:54 UTC |	
-  		|91        |1              |34                     |2016-08-25 15:50:54 UTC |	
-  		|91        |1              |34                     |2016-08-25 17:39:01 UTC |	
-  		|91        |1              |34                     |2016-08-25 20:16:49 UTC |
-  		|91        |1              |34                     |2016-08-25 17:52:59 UTC |	
-  		|91        |1              |34                     |2016-08-25 14:04:51 UTC |	
-  		|91        |1              |30                     |2016-08-30 17:04:01 UTC |
-  		|91        |1              |34                     |2016-08-25 19:28:51 UTC |	
-  		|91        |1              |34                     |2016-08-25 16:36:54 UTC |
+  | station_id | bikes_available | docks_available     | time                   |	
+  |:-----------|:--------------|:----------------------|:-----------------------|
+  |91          |1              |34                     |2016-08-25 18:15:00 UTC |	
+  |91          |1              |34                     |2016-08-25 17:24:54 UTC |	
+  |91          |1              |34                     |2016-08-25 15:50:54 UTC |	
+  |91          |1              |34                     |2016-08-25 17:39:01 UTC |	
+  |91          |1              |34                     |2016-08-25 20:16:49 UTC |
+  |91          |1              |34                     |2016-08-25 17:52:59 UTC |	
+  |91          |1              |34                     |2016-08-25 14:04:51 UTC |	
+  |91          |1              |30                     |2016-08-30 17:04:01 UTC |
+  |91          |1              |34                     |2016-08-25 19:28:51 UTC |	
+  |91          |1              |34                     |2016-08-25 16:36:54 UTC |
 
 
-  - SQL query:
+ - SQL query:
 
 
-    ```
-   SELECT * FROM `bigquery-public-data.san_francisco.bikeshare_status` WHERE bikes_available < 2 AND docks_available > 10 LIMIT 10
-   ```
+
+  ```
+    SELECT * FROM `bigquery-public-data.san_francisco.bikeshare_status` WHERE bikes_available < 2 AND docks_available > 10 LIMIT 10
+  ```
 
  
 - Question 2: What are the number different subscribers
 
   -  Answer:
 
-  		|subscriber_type|count |
-  		|:--------------|:-----|			
-  		|Customer       |136809|	
-  		|Subscriber     |846839|
+  | subscriber_type | count |
+  |:----------------|:---- -|			
+  |Customer         |136809 |	
+  |Subscriber       |846839 |
+
 
   - SQL query:
  
   
-    ```
+  ```
     SELECT subscriber_type , COUNT(*) FROM `bigquery-public-data.san_francisco.bikeshare_trips` GROUP BY subscriber_type
-    ```
+  ```
 
 
  - Question 3: What are the first 10 highest trips time in sec, the station id, and the subscribers 
 
   -  Answer:
 
- 	 	|duration_sec|bike_number|start_station_id|end_station_id|subscriber_type|
- 	 	|:-----------|:----------|:---------------|:-------------|:--------------|	
-  	 	|17270400    |535        |66              |62            |Customer       |	
-  	 	|2137000     |466        |77              |68            |Customer       |	
-  	 	|1852590     |680        |31              |32            |Subscriber     |
- 	 	|1133540     |262        |35              |35            |Customer       |	
- 	 	|722236      |247        |35              |35            |Customer       |	
- 	 	|720454      |692        |22              |25            |Customer       |	
- 	 	|716480      |633        |50              |72            |Subscriber     |	
- 	 	|715339      |251        |14              |5             |Customer       |	
- 	 	|688899      |230        |34              |36            |Customer       |	
- 	 	|655939      |132        |3               |12            |Customer       |
+   | duration_sec | bike_numbr | start_station_id | end_station_id | subscriber_type |
+   |:-----------|:----------|:---------------|:-------------|:--------------|	
+   |17270400    |535        |66              |62            |Customer       |	
+   |2137000     |466        |77              |68            |Customer       |	
+   |1852590     |680        |31              |32            |Subscriber     |
+   |1133540     |262        |35              |35            |Customer       |	
+   |722236      |247        |35              |35            |Customer       |	
+   |720454      |692        |22              |25            |Customer       |	
+   |716480      |633        |50              |72            |Subscriber     |	
+   |715339      |251        |14              |5             |Customer       |	
+   |688899      |230        |34              |36            |Customer       |	
+   |655939      |132        |3               |12            |Customer       |
 
 
   - SQL query: 
@@ -433,28 +443,28 @@ below, add as many questions as you need).
   -  Answer:
 
 
-  		|start_station_id|freq |
-  		|:---------------|-----|	
-  		|88              |20   |	
-  		|91              |69   |	
-  		|89              |84   |	
-  		|90              |173  |	
-  		|21              |241  |	
-  		|24              |272  |	
-  		|23              |373  |	
-  		|26              |463  |	
-  		|83              |467  |	
-  		|25              |931  |
+  | start_station_id | freq |
+  |:---------------|-----|	
+  |88              |20   |	
+  |91              |69   |	
+  |89              |84   |	
+  |90              |173  |	
+  |21              |241  |	
+  |24              |272  |	
+  |23              |373  |	
+  |26              |463  |	
+  |83              |467  |	
+  |25              |931  |
+
 
 
   - SQL query:
 
-
   
-    ```
+   ```
     SELECT  start_station_id, COUNT(*) as freq FROM `bigquery-public-data.san_francisco.bikeshare_trips` GROUP BY start_station_id ORDER BY 2 LIMIT 10
   
-     ```
+   ```
 
 
 
@@ -464,20 +474,20 @@ below, add as many questions as you need).
 
 
     
- 		| landmark     |freq |
- 		|:-------------|:----|		
- 		|San Francisco |37   |	
- 		|San Jose      |18   |	
- 		|Redwood City  |7    |	
- 		|Mountain View |7    |	
- 		|Palo Alto     |5    |
+   | landmark     |freq |
+   |:-------------|:----|		
+   |San Francisco |37   |	
+   |San Jose      |18   |	
+   |Redwood City  |7    |	
+   |Mountain View |7    |	
+   |Palo Alto     |5    |
 
 
   * SQL query:
 
 
     ```
-    SELECT landmark, COUNT(*) as freq  FROM `bigquery-public-data.san_francisco.bikeshare_stations`  
+     SELECT landmark, COUNT(*) as freq  FROM `bigquery-public-data.san_francisco.bikeshare_stations`  
 	GROUP BY landmark ORDER BY 2 DESC LIMIT 10
     ```
 
@@ -488,9 +498,9 @@ below, add as many questions as you need).
  * Answer:
 
 
-   		|avg_trip_time     |	
-   		|:-----------------|	
-   		|1018.9323467338004|
+   | avg_trip_time    |	
+   |:-----------------|	
+   |1018.9323467338004|
 
 - SQL query:
 
@@ -498,8 +508,8 @@ below, add as many questions as you need).
 
   ```
 
-  SELECT AVG(duration_sec) as avg_trip_time 
-    FROM `bigquery-public-data.san_francisco.bikeshare_trips`
+   SELECT AVG(duration_sec) as avg_trip_time 
+     FROM `bigquery-public-data.san_francisco.bikeshare_trips`
  ```
 
 
@@ -508,16 +518,16 @@ below, add as many questions as you need).
  - Answer
 
 
- 		| min_duration_trip|max_duration_trip|
- 		|:-----------------|:----------------|	
- 		|60                |17270400         |
+ | min_duration_trip | max_duration_trip |
+ |:------------------|:------------------|	
+ |60                 |17270400           |
 
  
    - SQL Query:
 
    
     ```
-    SELECT min(duration_sec) as min_duration_trip, max(duration_sec) as max_duration_trip FROM `bigquery-public-data.san_francisco.bikeshare_trips`
+      SELECT min(duration_sec) as min_duration_trip, max(duration_sec) as max_duration_trip FROM `bigquery-public-data.san_francisco.bikeshare_trips`
     ```
 
 - Question 8: What is the manimum and maximum bikes available
@@ -526,9 +536,9 @@ below, add as many questions as you need).
 
 
 
-   		| min_bike_available|max_bike_available|
-   		|:------------------|:-----------------|	
-   		|0                  |29                |
+   | min_bike_available | max_bike_available |
+   |:-------------------|:-------------------|	
+   |0                  |29                   |
 
 
 
@@ -537,7 +547,7 @@ below, add as many questions as you need).
 
 
    ```
-   SELECT min(bikes_available) as min_bike_available, max(bikes_available) as max_bike_available FROM `bigquery-public-data.san_francisco.bikeshare_status`
+     SELECT min(bikes_available) as min_bike_available, max(bikes_available) as max_bike_available FROM `bigquery-public-data.san_francisco.bikeshare_status`
    ```
 
 
@@ -547,13 +557,13 @@ below, add as many questions as you need).
 
 
 
-   		|Hour|trip_count|
-   		|:---|:---------|
-   		|8   |132464    |	
-   		|17  |126302    |	
-   		|9   |96118     |	
-   		|16  |88755     |	
-   		|18  |84569     |
+   |Hour|trip_count|
+   |:---|:---------|
+   |8   |132464    |	
+   |17  |126302    |	
+   |9   |96118     |	
+   |16  |88755     |	
+   |18  |84569     |
 
 
 - SQL query: 
@@ -561,10 +571,10 @@ below, add as many questions as you need).
 
 
  ```
- SELECT EXTRACT(HOUR FROM start_date) as Hour, count(EXTRACT(HOUR FROM start_date)) as trip_count
-   FROM `bigquery-public-data.san_francisco.bikeshare_trips`
-    GROUP BY Hour
-       ORDER BY trip_count DESC LIMIT 5
+   SELECT EXTRACT(HOUR FROM start_date) as Hour, count(EXTRACT(HOUR FROM start_date)) as trip_count
+     FROM `bigquery-public-data.san_francisco.bikeshare_trips`
+       GROUP BY Hour
+         ORDER BY trip_count DESC LIMIT 5
    ```
 
 
@@ -574,13 +584,13 @@ below, add as many questions as you need).
 
 
 
-   		|Hour|trip_count|
-   		|:---|:---------|		
-   		|17  |129072    |	
-   		|8   |123941    |	
-   		|9   |108459    |	
-   		|18  |96317     |	
-   		|16  |81238     |
+   | Hour | trip_count |
+   |:-----|:-----------|		
+   |17    |129072      |	
+   |8     |123941      |	
+   |9     |108459      |	
+   |18    |96317       |	
+   |16    |81238       |
 
 
  - SQL query:
@@ -588,10 +598,10 @@ below, add as many questions as you need).
 
  
    ```
-   SELECT EXTRACT(HOUR FROM end_date) as Hour, count(EXTRACT(HOUR FROM end_date)) as trip_count
-     FROM `bigquery-public-data.san_francisco.bikeshare_trips`
-       GROUP BY Hour
-        ORDER BY trip_count DESC LIMIT 5
+     SELECT EXTRACT(HOUR FROM end_date) as Hour, count(EXTRACT(HOUR FROM end_date)) as trip_count
+       FROM `bigquery-public-data.san_francisco.bikeshare_trips`
+         GROUP BY Hour
+           ORDER BY trip_count DESC LIMIT 5
    ```
 
 
@@ -601,13 +611,13 @@ below, add as many questions as you need).
  - Answer 
  
 
-   		|HR |MIN|duration_sec|	start_date           |	end_date             |
-   		|:--|:--|:-----------|:----------------------|:----------------------|		
-   		|16 |18 |3600        |2014-04-19 16:18:00 UTC|2014-04-19 17:18:00 UTC|	
-   		|16 |4  |3598        |2014-04-07 16:04:00 UTC|2014-04-07 17:04:00 UTC|	
-   		|16 |41 |3598        |2016-03-24 16:41:00 UTC|2016-03-24 17:41:00 UTC|	
-   		|17 |15 |3596        |2015-05-16 17:15:00 UTC|2015-05-16 18:15:00 UTC|	
-   		|16 |0  |3595        |2016-05-05 16:00:00 UTC|2016-05-05 17:00:00 UTC|
+   | HR | MIN | duration_sec | start_date            |	end_date          |
+   |:---|:----|:-------------|:----------------------|:----------------------|		
+   |16  |18   |3600          |2014-04-19 16:18:00 UTC|2014-04-19 17:18:00 UTC|	
+   |16  |4    |3598          |2014-04-07 16:04:00 UTC|2014-04-07 17:04:00 UTC|	
+   |16  |41   |3598          |2016-03-24 16:41:00 UTC|2016-03-24 17:41:00 UTC|	
+   |17  |15   |3596          |2015-05-16 17:15:00 UTC|2015-05-16 18:15:00 UTC|	
+   |16  |0    |3595          |2016-05-05 16:00:00 UTC|2016-05-05 17:00:00 UTC|
 
 
 - SQL query:
@@ -615,12 +625,11 @@ below, add as many questions as you need).
 
 
    ```
-    SELECT EXTRACT(HOUR FROM start_date) AS HR, EXTRACT(MINUTE FROM start_date) AS MIN, duration_sec, start_date, end_date
-   	 FROM `bigquery-public-data.san_francisco.bikeshare_trips`
+      SELECT EXTRACT(HOUR FROM start_date) AS HR, EXTRACT(MINUTE FROM start_date) AS MIN, duration_sec, start_date, end_date
+   	   FROM `bigquery-public-data.san_francisco.bikeshare_trips`
       		 WHERE ((EXTRACT(HOUR FROM start_date) IN (6,7,8)) OR (EXTRACT(HOUR FROM start_date) IN (16,17,18,19))) AND (duration_sec >= 300 AND duration_sec <= 3600)
         		ORDER BY duration_sec DESC LIMIT 5
    ```
-
 
 
 - Question 12: What is the peak trip Hours and days of the week most trips occurs and the station?
@@ -629,24 +638,24 @@ below, add as many questions as you need).
 
 
 
- 		|hour|weekday|start_station_name                     |end_station_name   | duration_sec|subscriber_type|frequency|
- 		|:---|:------|:--------------------------------------|:------------------|:------------|:--------------|:--------|
- 		|8   |3      |Harry Bridges Plaza (Ferry Building)   |2nd at Townsend    |466          |Subscriber     |12       |	
- 		|9   |2      |San Francisco Caltrain 2 (330 Townsend)|Townsend at 7th    |248          |Subscriber     |10       |	
- 		|8   |2      |Harry Bridges Plaza (Ferry Building)   |2nd at Townsend    |485          |Subscriber     |9	 |
- 		|17  |3      |Townsend at 7th                        |Townsend at 4th    |210          |Subscriber     |9        |	
- 		|9   |5      |Mountain View Caltrain Station         |M View City Hall   |243          |Subscriber     |9        | 	 
- 		|6   |8      |Harry Bridges Plaza (Ferry Building)   |2nd at Townsend    |481          |Subscriber     |9        | 	
- 		|8   |4.     |Harry Bridges Plaza (Ferry Building).  |2nd at Townsend    |455          |Subscriber     |9        |  	
- 		|16  |3      |2nd at Townsend                        |Harry Bridges Plaza|418          |Subscriber     |9        |	
- 		|9   |3      |Mountain View Caltrain Station         |Mt View City Hall  |232          |Subscriber     |9        |	 
- 		|8   |3      |San Francisco Caltrain 2 (330 Townsend)|Townsend at 7th    |214          |Subscriber     |9        |
+ | hour | weekday | start_station_name                | end_station_name   | duration_sec | subscriber_type | frequency |
+ |:---|:------|:--------------------------------------|:-------------------|:-------------|:--------------|:------------|
+ |8   |3      |Harry Bridges Plaza (Ferry Building)   |2nd at Townsend     |466           |Subscriber     |12           |	
+ |9   |2      |San Francisco Caltrain 2 (330 Townsend)|Townsend at 7th     |248           |Subscriber     |10           |	
+ |8   |2      |Harry Bridges Plaza (Ferry Building)   |2nd at Townsend     |485           |Subscriber     |9	        |
+ |17  |3      |Townsend at 7th                        |Townsend at 4th     |210           |Subscriber     |9            |	
+ |9   |5      |Mountain View Caltrain Station         |M View City Hall    |243           |Subscriber     |9            | 	 
+ |6   |8      |Harry Bridges Plaza (Ferry Building)   |2nd at Townsend     |481           |Subscriber     |9            | 	
+ |8   |4.     |Harry Bridges Plaza (Ferry Building).  |2nd at Townsend     |455           |Subscriber     |9            |  	
+ |16  |3      |2nd at Townsend                        |Harry Bridges Plaza |418           |Subscriber     |9            |	
+ |9   |3      |Mountain View Caltrain Station         |Mt View City Hall   |232           |Subscriber     |9            |	 
+ |8   |3      |San Francisco Caltrain 2 (330 Townsend)|Townsend at 7th     |214           |Subscriber     |9            |
 	 	 
 
 - SQL query:
 
   ```
-  SELECT  EXTRACT(HOUR from start_date) AS hour, EXTRACT(DAYOFWEEK from start_date) as weekday,start_station_name, end_station_name,duration_sec,subscriber_type, COUNT(*) as frequeny
+    SELECT  EXTRACT(HOUR from start_date) AS hour, EXTRACT(DAYOFWEEK from start_date) as weekday,start_station_name, end_station_name,duration_sec,subscriber_type, COUNT(*) as frequeny
 	 FROM `bigquery-public-data.san_francisco.bikeshare_trips`
 		WHERE EXTRACT(DAYOFWEEK from start_date) IN (2,3,4,5,6,7) AND EXTRACT(HOUR from start_date) IN (6,7,8,9,16,17,18,19)
 			GROUP BY start_station_name,subscriber_type, end_station_name,duration_sec,hour,weekday
@@ -670,7 +679,8 @@ You can run queries using the "bang" command to shell out, such as this:
 
 ```
 ! bq query --use_legacy_sql=FALSE '<your-query-here>'
-```
+``
+`
 
 - NOTE: 
 - Queries that return over 16K rows will not run this way, 
