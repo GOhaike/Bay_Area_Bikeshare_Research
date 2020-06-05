@@ -147,10 +147,9 @@ Paste your SQL query and answer the question in a sentence.  Be sure you properl
 
    - Answer: 
 
-			
-  | earliest_startr_date_and_time | latest_end_date_and_time|
-  |:------------------------------| :-----------------------| 
-  | 2013-08-29 09:08:00 UTC       | 2016-08-31 23:48:00 UTC |
+   | earliest_startr_date_and_time | latest_end_date_and_time|
+   |:------------------------------|:------------------------| 
+   | 2013-08-29 09:08:00 UTC       | 2016-08-31 23:48:00 UTC |
 
 
 - How many bikes are there?
@@ -271,9 +270,9 @@ from `bigquery-public-data.san_francisco_bikeshare.bikeshare_station_info`
     ```
 
 	
-    	| freq   |
-     	|:-------|
-     	| 983648 |
+   | freq   |
+   |:-------|
+   | 983648 |
 
  
   * What is the earliest start time and latest end time for a trip?
@@ -286,7 +285,7 @@ from `bigquery-public-data.san_francisco_bikeshare.bikeshare_station_info`
 
 
   	| earliest_Start_date_and_time | latest_end_date_and_time |
-  	|:-----------------------------|--------------------------|
+  	|:-----------------------------|:-------------------------|
   	| 2013-08-29 09:08:00          |      2016-08-31 23:48:00 |
     
     
@@ -358,7 +357,7 @@ below, add as many questions as you need).
 
 - Question 13 What is the number of trips recorded at by region
 
-### Answers
+###  Answers
 
  Answer at least 4 of the questions you identified above You can use either
  BigQuery or the bq command line tool.  Paste your questions, queries and
@@ -390,15 +389,17 @@ below, add as many questions as you need).
     SELECT * FROM `bigquery-public-data.san_francisco.bikeshare_status` WHERE bikes_available < 2 AND docks_available > 10 LIMIT 10
   ```
 
+
+
  
 - Question 2: What are the number different subscribers
 
   -  Answer:
 
   | subscriber_type | count |
-  |:----------------|:---- -|			
-  |Customer         |136809 |	
-  |Subscriber       |846839 |
+  |:----------------|:------|
+  |Customer         | 136808|
+  |Subscriber       | 846839|
 
 
   - SQL query:
@@ -518,9 +519,9 @@ below, add as many questions as you need).
  - Answer
 
 
- | min_duration_trip | max_duration_trip |
- |:------------------|:------------------|	
- |60                 |17270400           |
+   | min_duration_trip | max_duration_trip |
+   |:------------------|:------------------|	
+   |60                 |17270400           |
 
  
    - SQL Query:
@@ -553,8 +554,7 @@ below, add as many questions as you need).
 
 - Question 9: What are the top 5 busiest trip hours from the start date?
 
-   * Answer
-
+   - Answer
 
 
    |Hour|trip_count|
@@ -570,7 +570,7 @@ below, add as many questions as you need).
 
 
 
- ```
+  ```
    SELECT EXTRACT(HOUR FROM start_date) as Hour, count(EXTRACT(HOUR FROM start_date)) as trip_count
      FROM `bigquery-public-data.san_francisco.bikeshare_trips`
        GROUP BY Hour
@@ -580,7 +580,7 @@ below, add as many questions as you need).
 
 - Question 10: What are the top 5 busiest trip hours from the end date?
 
- * Answer:
+ - Answer:
 
 
 
@@ -625,41 +625,42 @@ below, add as many questions as you need).
 
 
    ```
-      SELECT EXTRACT(HOUR FROM start_date) AS HR, EXTRACT(MINUTE FROM start_date) AS MIN, duration_sec, start_date, end_date
-   	   FROM `bigquery-public-data.san_francisco.bikeshare_trips`
-      		 WHERE ((EXTRACT(HOUR FROM start_date) IN (6,7,8)) OR (EXTRACT(HOUR FROM start_date) IN (16,17,18,19))) AND (duration_sec >= 300 AND duration_sec <= 3600)
-        		ORDER BY duration_sec DESC LIMIT 5
+    SELECT EXTRACT(HOUR FROM start_date) AS HR, EXTRACT(MINUTE FROM start_date) AS MIN, duration_sec, start_date, end_date
+      FROM `bigquery-public-data.san_francisco.bikeshare_trips`
+        WHERE ((EXTRACT(HOUR FROM start_date) IN (6,7,8)) OR (EXTRACT(HOUR FROM start_date) IN (16,17,18,19))) AND (duration_sec >= 300 AND duration_sec <= 3600)
+         ORDER BY duration_sec DESC LIMIT 5
    ```
 
 
 - Question 12: What is the peak trip Hours and days of the week most trips occurs and the station?
 
-* Answer 
+-  Answer 
 
 
 
- | hour | weekday | start_station_name                | end_station_name   | duration_sec | subscriber_type | frequency |
- |:---|:------|:--------------------------------------|:-------------------|:-------------|:--------------|:------------|
- |8   |3      |Harry Bridges Plaza (Ferry Building)   |2nd at Townsend     |466           |Subscriber     |12           |	
- |9   |2      |San Francisco Caltrain 2 (330 Townsend)|Townsend at 7th     |248           |Subscriber     |10           |	
- |8   |2      |Harry Bridges Plaza (Ferry Building)   |2nd at Townsend     |485           |Subscriber     |9	        |
- |17  |3      |Townsend at 7th                        |Townsend at 4th     |210           |Subscriber     |9            |	
- |9   |5      |Mountain View Caltrain Station         |M View City Hall    |243           |Subscriber     |9            | 	 
- |6   |8      |Harry Bridges Plaza (Ferry Building)   |2nd at Townsend     |481           |Subscriber     |9            | 	
- |8   |4.     |Harry Bridges Plaza (Ferry Building).  |2nd at Townsend     |455           |Subscriber     |9            |  	
- |16  |3      |2nd at Townsend                        |Harry Bridges Plaza |418           |Subscriber     |9            |	
- |9   |3      |Mountain View Caltrain Station         |Mt View City Hall   |232           |Subscriber     |9            |	 
- |8   |3      |San Francisco Caltrain 2 (330 Townsend)|Townsend at 7th     |214           |Subscriber     |9            |
+   | hour | weekday | start_station_name                    | end_station_name   | duration_sec | subscriber_type | frequency   |
+   |:-----|:--------|:--------------------------------------|:-------------------|:-------------|:----------------|:------------|
+   |8     |3        |Harry Bridges Plaza (Ferry Building)   |2nd at Townsend     |466           |Subscriber       |12           |	
+   |9     |2        |San Francisco Caltrain 2 (330 Townsend)|Townsend at 7th     |248           |Subscriber       |10           |	
+   |8     |2        |Harry Bridges Plaza (Ferry Building)   |2nd at Townsend     |485           |Subscriber       |9	        |
+   |17    |3        |Townsend at 7th                        |Townsend at 4th     |210           |Subscriber       |9            |	
+   |9     |5        |Mountain View Caltrain Station         |M View City Hall    |243           |Subscriber       |9            | 	 
+   |6     |8        |Harry Bridges Plaza (Ferry Building)   |2nd at Townsend     |481           |Subscriber       |9            | 	
+   |8     |4        |Harry Bridges Plaza (Ferry Building).  |2nd at Townsend     |455           |Subscriber       |9            |  	
+   |16    |3        |2nd at Townsend                        |Harry Bridges Plaza |418           |Subscriber       |9            |	
+   |9     |3        |Mountain View Caltrain Station         |Mt View City Hall   |232           |Subscriber       |9            |	 
+   |8     |3        |San Francisco Caltrain 2 (330 Townsend)|Townsend at 7th     |214           |Subscriber       |9            |
 	 	 
 
 - SQL query:
 
   ```
+   
     SELECT  EXTRACT(HOUR from start_date) AS hour, EXTRACT(DAYOFWEEK from start_date) as weekday,start_station_name, end_station_name,duration_sec,subscriber_type, COUNT(*) as frequeny
-	 FROM `bigquery-public-data.san_francisco.bikeshare_trips`
-		WHERE EXTRACT(DAYOFWEEK from start_date) IN (2,3,4,5,6,7) AND EXTRACT(HOUR from start_date) IN (6,7,8,9,16,17,18,19)
-			GROUP BY start_station_name,subscriber_type, end_station_name,duration_sec,hour,weekday
-				ORDER BY frequency DESC LIMIT 10
+      FROM `bigquery-public-data.san_francisco.bikeshare_trips`
+        WHERE EXTRACT(DAYOFWEEK from start_date) IN (2,3,4,5,6,7) AND EXTRACT(HOUR from start_date) IN (6,7,8,9,16,17,18,19)
+	   GROUP BY start_station_name,subscriber_type, end_station_name,duration_sec,hour,weekday
+		ORDER BY frequency DESC LIMIT 10
   ```
 
 
