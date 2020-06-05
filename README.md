@@ -304,18 +304,21 @@ from `bigquery-public-data.san_francisco_bikeshare.bikeshare_station_info`
     
       ```
       bq query --use_legacy_sql=false 'SELECT COUNTIF(EXTRACT(HOUR FROM start_date) IN (5,6,7,8,9)) AS morning_trip, 
-      COUNTIF(EXTRACT(HOUR FROM start_date) IN (12,13,14,15)) AS afternoon_trip,
-      COUNTIF(EXTRACT(HOUR FROM start_date) IN (16,18,19,20)) AS evening_trip,
-      FROM `bigquery-public-data.san_francisco.bikeshare_trips`'
+      	COUNTIF(EXTRACT(HOUR FROM start_date) IN (12,13,14,15)) AS afternoon_trip,
+      		COUNTIF(EXTRACT(HOUR FROM start_date) IN (16,18,19,20)) AS evening_trip,
+     			 FROM `bigquery-public-data.san_francisco.bikeshare_trips`'
       ```
 
 
-  * Output    
-	+--------------+----------------+--------------+
-	| morning_trip | afternoon_trip | evening_trip |
-	+--------------+----------------+--------------+
-	|       321730 |         176142 |       237142 |
-	+--------------+----------------+--------------+
+
+  * Output  
+
+  
++--------------+----------------+--------------+
+| morning_trip | afternoon_trip | evening_trip |
++--------------+----------------+--------------+
+|       321730 |         176142 |       237142 |
++--------------+----------------+--------------+
 
 ### Project Questions
 Identify the main questions you'll need to answer to make recommendations (list
@@ -449,7 +452,7 @@ below, add as many questions as you need).
 
   
     ```
-    SELECT  start_station_id, COUNT(*) as freq FROM `bigquery-public-data.san_francisco.bikeshare_trips`GROUP BY start_station_id ORDER BY 2 LIMIT 10
+    SELECT  start_station_id, COUNT(*) as freq FROM `bigquery-public-data.san_francisco.bikeshare_trips` GROUP BY start_station_id ORDER BY 2 LIMIT 10
   
      ```
 
